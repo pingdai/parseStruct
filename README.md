@@ -10,20 +10,23 @@ parse struct by tag
 ## Example
 
 ```
-func TestParseStructFromFile(t *testing.T) {
+package main
+
+import "fmt"
+
+func main() {
 
 	fieldsMap, err := ParseStruct("parse_struct_test.go", nil, "json")
 	if err != nil {
-		t.Fatalf("err:%v", err)
-		return
+		panic(err)
 	}
 
 	for structName, fields := range fieldsMap {
-		t.Logf("structName:%s", structName)
+		fmt.Printf("structName:%s\n", structName)
 		for _, field := range fields {
-			t.Logf("	FieldName:%s", field.Names[0].Name)
-			t.Logf("	FieldType:%s", field.Type)
-			t.Logf("	FieldTag:%s", field.Tag.Value)
+			fmt.Printf("	FieldName:%s\n", field.Names[0].Name)
+			fmt.Printf("	FieldType:%s\n", field.Type)
+			fmt.Printf("	FieldTag:%s\n", field.Tag.Value)
 		}
 	}
 	return
