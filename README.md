@@ -9,7 +9,7 @@ parse struct by tag
 
 ## Example
 
-```
+```go
 package main
 
 import "fmt"
